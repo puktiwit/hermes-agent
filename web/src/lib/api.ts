@@ -1322,7 +1322,33 @@ export const api = {
     fetchJSON<SkillHubScan>(
       `/api/skills/hub/scan?identifier=${encodeURIComponent(identifier)}`,
     ),
+  // ---- Mission Control: Todos ----
+  getTodos: () => fetchJSON<Todo[]>("/api/todos"),
+  createTodo: (content: string, status: TodoStatus = "pending") =>
+    fetchJSON<Todo>("/api/todos", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ content, status }),
+    }),
+  updateTodo: (id: string, patch: Partial<{ content: string; status: TodoStatus }>) =>
+    fetchJSON<Todo>(`/api/todos/${encodeURIComponent(id)}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(patch),
+    }),
+  deleteTodo: (id: string) =>
+    fetchJSON<null>(`/api/todos/${encodeURIComponent(id)}`, {
+      method: "DELETE",
+    }),
 };
+
+export type TodoStatus = "pending" | "in_progress" | "completed" | "cancelled";
+
+export interface Todo {
+  id: string;
+  content: string;
+  status: TodoStatus;
+}
 
 /** Identity payload returned by ``GET /api/auth/me`` (Phase 7).
  *

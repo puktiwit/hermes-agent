@@ -11959,6 +11959,9 @@ def _raise_if_cron_registration_error(e: Exception) -> None:
 from hermes_cli.web_routers import cron as _cron_routes  # noqa: E402
 
 app.include_router(_cron_routes.router)
+from hermes_cli.web_routers import todos as _todos_routes  # noqa: E402
+
+app.include_router(_todos_routes.router)
 from hermes_cli.web_routers.cron import (  # noqa: E402,F401 — legacy re-exports; tests call these via web_server.<name>
     list_cron_jobs,
     get_cron_job,
@@ -16617,6 +16620,9 @@ _BUILTIN_DASHBOARD_THEMES = [
     {"name": "default",       "label": "Hermes Teal",         "description": "Classic dark teal — the canonical Hermes look"},
     {"name": "default-large", "label": "Hermes Teal (Large)", "description": "Hermes Teal with bigger fonts and roomier spacing"},
     {"name": "nous-blue",     "label": "Nous Blue",           "description": "Light mode — vivid Nous-blue accents on cream canvas"},
+    {"name": "daylight",      "label": "Daylight",            "description": "Light mode — airy sky-blue on white canvas"},
+    {"name": "forest",        "label": "Forest",              "description": "Deep moss green with warm leaf accents"},
+    {"name": "sunset",        "label": "Sunset",              "description": "Light mode — warm peach and rose on ivory"},
     {"name": "midnight",      "label": "Midnight",            "description": "Deep blue-violet with cool accents"},
     {"name": "ember",     "label": "Ember",          "description": "Warm crimson and bronze — forge vibes"},
     {"name": "mono",      "label": "Mono",           "description": "Clean grayscale — minimal and focused"},
