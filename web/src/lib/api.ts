@@ -1340,6 +1340,23 @@ export const api = {
     fetchJSON<null>(`/api/todos/${encodeURIComponent(id)}`, {
       method: "DELETE",
     }),
+  // ---- YouTube Summarizer ----
+  youtubeSummarize: (url: string, lang?: string) =>
+    fetchJSON<YoutubeSummary>("/api/youtube/summarize", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ url, lang }),
+    }),
+  getYoutubeSummaries: () => fetchJSON<YoutubeSummary[]>("/api/youtube/summaries"),
+  deleteYoutubeSummary: (id: string) =>
+    fetchJSON<null>(`/api/youtube/summaries/${encodeURIComponent(id)}`, {
+      method: "DELETE",
+    }),
+  sendYoutubeSummaryToTelegram: (id: string) =>
+    fetchJSON<{ status: string; pdf: string }>(
+      `/api/youtube/summaries/${encodeURIComponent(id)}/send-telegram`,
+      { method: "POST" },
+    ),
 };
 
 export type TodoStatus = "pending" | "in_progress" | "completed" | "cancelled";
@@ -1348,6 +1365,15 @@ export interface Todo {
   id: string;
   content: string;
   status: TodoStatus;
+}
+
+export interface YoutubeSummary {
+  id: string;
+  video_id: string;
+  url: string;
+  summary: string;
+  transcript_len: number;
+  created_at: number;
 }
 
 /** Identity payload returned by ``GET /api/auth/me`` (Phase 7).

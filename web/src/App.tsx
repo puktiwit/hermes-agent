@@ -55,6 +55,7 @@ import {
   Webhook,
   Wrench,
   X,
+  Youtube,
   Zap,
 } from "lucide-react";
 import { Button } from "@nous-research/ui/ui/components/button";
@@ -87,6 +88,7 @@ const AnalyticsPage = lazy(() => import("@/pages/AnalyticsPage"));
 const ModelsPage = lazy(() => import("@/pages/ModelsPage"));
 const CronPage = lazy(() => import("@/pages/CronPage"));
 const MissionControlPage = lazy(() => import("@/pages/MissionControlPage"));
+const YoutubeSummarizerPage = lazy(() => import("@/pages/YoutubeSummarizerPage"));
 const ProfilesPage = lazy(() => import("@/pages/ProfilesPage"));
 const ProfileBuilderPage = lazy(() => import("@/pages/ProfileBuilderPage"));
 const SkillsPage = lazy(() => import("@/pages/SkillsPage"));
@@ -163,6 +165,7 @@ const BUILTIN_ROUTES_CORE: Record<string, ComponentType> = {
   "/logs": LogsPage,
   "/cron": CronPage,
   "/mission-control": MissionControlPage,
+  "/youtube": YoutubeSummarizerPage,
   "/skills": SkillsPage,
   "/plugins": PluginsPage,
   "/mcp": McpPage,
@@ -208,6 +211,7 @@ const BUILTIN_NAV_REST: NavItem[] = [
   { path: "/logs", labelKey: "logs", label: "Logs", icon: FileText },
   { path: "/cron", labelKey: "cron", label: "Cron", icon: Clock },
   { path: "/mission-control", label: "Mission Control", icon: Radar },
+  { path: "/youtube", label: "YouTube Summarizer", icon: Youtube },
   { path: "/skills", labelKey: "skills", label: "Skills", icon: Package },
   { path: "/plugins", labelKey: "plugins", label: "Plugins", icon: Puzzle },
   { path: "/mcp", label: "MCP", icon: Plug },

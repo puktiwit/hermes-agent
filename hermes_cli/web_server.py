@@ -11962,6 +11962,9 @@ app.include_router(_cron_routes.router)
 from hermes_cli.web_routers import todos as _todos_routes  # noqa: E402
 
 app.include_router(_todos_routes.router)
+from hermes_cli.web_routers import youtube as _youtube_routes  # noqa: E402
+
+app.include_router(_youtube_routes.router)
 from hermes_cli.web_routers.cron import (  # noqa: E402,F401 — legacy re-exports; tests call these via web_server.<name>
     list_cron_jobs,
     get_cron_job,
