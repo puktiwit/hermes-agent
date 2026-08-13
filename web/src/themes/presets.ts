@@ -204,7 +204,91 @@ export const nousBlueTheme: DashboardTheme = {
     inputTokenAccent: "#001934",
     outputTokenAccent: "#0053fd",
   },
-  swatchColors: ["#170d02", "#0053FD", "#E8F2FD"],
+  swatchColors: ["#170d02", "#0053fd", "#E8F2FD"],
+};
+
+/** Daylight — bright light mode for daytime use. */
+export const daylightTheme: DashboardTheme = {
+  name: "daylight",
+  label: "Daylight",
+  description: "Light mode — airy sky-blue on white canvas",
+  palette: {
+    background: { hex: "#f4f8fb", alpha: 1 },
+    midground: { hex: "#0b6bcb", alpha: 1 },
+    foreground: { hex: "#0a1722", alpha: 0 },
+    warmGlow: "rgba(11, 107, 203, 0.1)",
+    noiseOpacity: 0,
+  },
+  typography: DEFAULT_TYPOGRAPHY,
+  layout: DEFAULT_LAYOUT,
+  terminalBackground: "#ffffff",
+  terminalForeground: "#0a1722",
+  seriesColors: {
+    inputTokenAccent: "#0a1722",
+    outputTokenAccent: "#0b6bcb",
+  },
+  swatchColors: ["#0a1722", "#0b6bcb", "#f4f8fb"],
+};
+
+/** Forest — calm dark green, easy on the eyes for long sessions. */
+export const forestTheme: DashboardTheme = {
+  name: "forest",
+  label: "Forest",
+  description: "Deep moss green with warm leaf accents",
+  palette: {
+    background: { hex: "#06140d", alpha: 1 },
+    midground: { hex: "#bff0c8", alpha: 1 },
+    foreground: { hex: "#ffffff", alpha: 0 },
+    warmGlow: "rgba(74, 222, 128, 0.28)",
+    noiseOpacity: 0.85,
+  },
+  typography: {
+    ...DEFAULT_TYPOGRAPHY,
+    fontSans: `"Inter", ${SYSTEM_SANS}`,
+    fontMono: `"JetBrains Mono", ${SYSTEM_MONO}`,
+    fontUrl:
+      "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap",
+  },
+  layout: {
+    ...DEFAULT_LAYOUT,
+    radius: "0.625rem",
+  },
+  colorOverrides: {
+    success: "#4ade80",
+    warning: "#fbbf24",
+  },
+};
+
+/** Sunset — warm light mode, soft orange-to-pink wash. */
+export const sunsetTheme: DashboardTheme = {
+  name: "sunset",
+  label: "Sunset",
+  description: "Light mode — warm peach and rose on ivory",
+  palette: {
+    background: { hex: "#fdeee4", alpha: 1 },
+    midground: { hex: "#d2483f", alpha: 1 },
+    foreground: { hex: "#2b1206", alpha: 0 },
+    warmGlow: "rgba(210, 72, 63, 0.12)",
+    noiseOpacity: 0,
+  },
+  typography: {
+    ...DEFAULT_TYPOGRAPHY,
+    fontSans: `"Fraunces", Georgia, serif`,
+    fontMono: `"DM Mono", ${SYSTEM_MONO}`,
+    fontUrl:
+      "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500&family=DM+Mono:wght@400;500&display=swap",
+  },
+  layout: {
+    ...DEFAULT_LAYOUT,
+    radius: "0.875rem",
+  },
+  terminalBackground: "#fff7f1",
+  terminalForeground: "#2b1206",
+  seriesColors: {
+    inputTokenAccent: "#2b1206",
+    outputTokenAccent: "#d2483f",
+  },
+  swatchColors: ["#2b1206", "#d2483f", "#fdeee4"],
 };
 
 /**
@@ -232,6 +316,9 @@ export const BUILTIN_THEMES: Record<string, DashboardTheme> = {
   default: defaultTheme,
   "default-large": defaultLargeTheme,
   "nous-blue": nousBlueTheme,
+  daylight: daylightTheme,
+  forest: forestTheme,
+  sunset: sunsetTheme,
   midnight: midnightTheme,
   ember: emberTheme,
   mono: monoTheme,
